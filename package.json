@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint pages/**/*.js",
-    "lint:fix": "eslint --fix pages/**/*.js",
-    "test:all": "CI=true react-scripts-ts test && yarn run lint"
+    "start": "cross-env NODE_ENV=production PORT=3000 node ",
+    "test": "yarn test:unit",
+    "test:unit": "cross-env BABEL_ENV=test jest --coverage --no-cache",
+    "test:watch": "yarn test:unit -- --watch",
+    "test:coverage": "yarn test:unit -- --coverage"
   },
   "dependencies": {
     "next": "9.3.1",
@@ -16,10 +17,15 @@
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "react-responsive": "^8.0.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8"
   },
   "devDependencies": {
+    "autoprefixer": "^9.7.4",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.0",
@@ -30,12 +36,13 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "webpack": "^4.42.0"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn run test:all"
+      "pre-push": "lint-staged && yarn test"
     }
   },
   "lint-staged": {
