@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production PORT=3000 node ",
+    "start": "next start",
     "test": "yarn test:unit",
     "test:unit": "cross-env BABEL_ENV=test jest --coverage --no-cache",
     "test:watch": "yarn test:unit -- --watch",
