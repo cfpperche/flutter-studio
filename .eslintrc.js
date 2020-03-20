@@ -26,5 +26,7 @@ module.exports = {
     'no-console': 'warn',
     'no-eval': 'error',
     'import/first': 'error',
+    'react/jsx-props-no-spreading': ['off'],
+    "global-require": 0  
   },
 }
