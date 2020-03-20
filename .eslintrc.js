@@ -18,15 +18,31 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'prettier'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules', '.'],
+      },
+    },
+  },
   rules: {
-    'prettier/prettier': 'error',
-    'react/jsx-filename-extension': ['warn', {extensions: ['.jsx', '.js']}],
-    'import/prefer-default-export': 'off',
+    'no-unused-vars': 'off',
     'no-param-reassign': 'off',
     'no-console': 'warn',
+    'no-use-before-define': 'off',
+    'no-nested-ternary': 'off',
+    'no-underscore-dangle': 'off',
     'no-eval': 'error',
+
+    'prettier/prettier': 'error',
+    'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
+    'import/prefer-default-export': 'off',
+
     'import/first': 'error',
     'react/jsx-props-no-spreading': ['off'],
-    "global-require": 0  
+    'global-require': 'off',
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
   },
-}
+};
