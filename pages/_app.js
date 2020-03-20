@@ -1,9 +1,12 @@
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/core/styles';
 import withRedux from 'next-redux-wrapper';
 import App, { Container } from 'next/app';
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from '~/store';
 
+const theme = {};
 class CustomApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
@@ -19,7 +22,11 @@ class CustomApp extends App {
     return (
       <Container>
         <Provider store={store}>
-          <Component {...pageProps} />
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
         </Provider>
       </Container>
     );
