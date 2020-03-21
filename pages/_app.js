@@ -1,36 +1,54 @@
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { AnimatePresence } from 'framer-motion';
 import withRedux from 'next-redux-wrapper';
-import App, { Container } from 'next/app';
+import App from 'next/app';
+import 'normalize.css';
 import React from 'react';
 import { Provider } from 'react-redux';
+import theme from '~/components/theme';
 import configureStore from '~/store';
+import '~/styles/app.css';
+import '~/styles/tailwind.css';
 
-const theme = {};
+const Noop = ({ children }) => children;
+
 class CustomApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    const pageProps = Component.getInitialProps
-      ? await Component.getInitialProps(ctx)
-      : {};
-
-    // Anything returned here can be access by the client
-    return { pageProps };
+  componentDidMount() {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
   }
 
   render() {
-    const { Component, pageProps, store } = this.props;
+    const { Component, pageProps, router, store } = this.props;
+
+    const Layout = Component.Layout || Noop;
+
     return (
-      <Container>
+      <>
         <Provider store={store}>
           <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Component {...pageProps} />
+            <Layout>
+              <AnimatePresence exitBeforeEnter>
+                <Component {...pageProps} key={router.route} />
+              </AnimatePresence>
+            </Layout>
           </ThemeProvider>
         </Provider>
-      </Container>
+      </>
     );
   }
 }
+
+CustomApp.getInitialProps = async ({ Component, ctx }) => {
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
+
+  // Anything returned here can be access by the client
+  return { pageProps };
+};
 
 export default withRedux(configureStore)(CustomApp);
