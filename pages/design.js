@@ -3,18 +3,34 @@ import clsx from 'clsx';
 import React from 'react';
 
 const useStyles = makeStyles({
-  root: {
-    flex: '1',
+  container: {
+    display: 'flex',
+    flex: '1 0 auto',
+    flexFlow: 'row nowrap',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    alignContent: 'stretch',
     background: '#1f1f1f',
   },
+  basePanel: {
+    alignSelf: 'stretch',
+    backgroundColor: '#404040',
+  },
   leftPanel: {
-    background: 'red',
+    flex: '0 1 auto',
+    order: 0,
+    borderRight: '1px solid #1a1a1a',
   },
   centerPanel: {
-    background: 'green',
+    flex: '1 1 auto',
+    order: 0,
+    background: '#E6E6E6',
   },
   rightPanel: {
-    background: 'yellow',
+    flex: '0 1 auto',
+    order: 0,
+    width: '250px',
+    borderLeft: '1px solid #1a1a1a',
   },
 });
 
@@ -22,10 +38,16 @@ function Design(props) {
   const classes = useStyles(props);
 
   return (
-    <div className={clsx(classes.root)}>
-      <div className={clsx(classes.leftPanel)}>col-left</div>
-      <div className={clsx(classes.centerPanel)}>col-center</div>
-      <div className={clsx(classes.rightPanel)}>col-right</div>
+    <div className={clsx(classes.container)}>
+      <div className={clsx(classes.basePanel, classes.leftPanel)}>
+        col-left1
+      </div>
+      <div className={clsx(classes.basePanel, classes.centerPanel)}>
+        col-center
+      </div>
+      <div className={clsx(classes.basePanel, classes.rightPanel)}>
+        col-right
+      </div>
     </div>
   );
 }

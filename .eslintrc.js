@@ -27,6 +27,7 @@ module.exports = {
     },
   },
   rules: {
+    'no-unused-expressions': 'off',
     'no-unused-vars': 'off',
     'no-param-reassign': 'off',
     'no-console': 'warn',
@@ -34,8 +35,8 @@ module.exports = {
     'no-nested-ternary': 'off',
     'no-underscore-dangle': 'off',
     'no-eval': 'error',
-
-    'prettier/prettier': 'error',
+    'no-shadow': 'off',
+    'prettier/prettier': ['error'],
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
     'import/prefer-default-export': 'off',
 
@@ -44,5 +45,13 @@ module.exports = {
     'global-require': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton'],
+      },
+    ],
   },
 };

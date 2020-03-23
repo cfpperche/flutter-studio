@@ -168,4 +168,6 @@ dist
 !.vscode/launch.json
 !.vscode/extensions.json
 
+
+!.eslintrc.js
 # End of https://www.gitignore.io/api/visualstudiocode
