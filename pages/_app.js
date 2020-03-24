@@ -6,7 +6,6 @@ import 'normalize.css';
 import React from 'react';
 import { Provider } from 'react-redux';
 import theme from '~/components/theme';
-import { ViewportWarning } from '~/components/ui/ViewportWarning';
 import configureStore from '~/store';
 import '~/styles/app.css';
 import '~/styles/tailwind.css';
@@ -38,7 +37,6 @@ class CustomApp extends App {
             </Layout>
           </ThemeProvider>
         </Provider>
-        <ViewportWarning />
       </>
     );
   }

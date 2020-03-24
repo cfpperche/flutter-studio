@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
+import { ViewportWarning } from '~/components/ui/ViewportWarning';
 
 const useStyles = makeStyles({
   container: {
@@ -48,6 +49,7 @@ function Design(props) {
       <div className={clsx(classes.basePanel, classes.rightPanel)}>
         col-right
       </div>
+      <ViewportWarning />
     </div>
   );
 }
