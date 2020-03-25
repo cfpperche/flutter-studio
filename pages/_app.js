@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import withRedux from 'next-redux-wrapper';
 import App from 'next/app';
 import 'normalize.css';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import React from 'react';
 import { Provider } from 'react-redux';
 import theme from '~/components/theme';

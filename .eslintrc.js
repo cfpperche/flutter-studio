@@ -31,6 +31,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-param-reassign': 'off',
     'no-console': 'warn',
+    "no-constant-condition": "off",
     'no-use-before-define': 'off',
     'no-nested-ternary': 'off',
     'no-underscore-dangle': 'off',
@@ -38,8 +39,8 @@ module.exports = {
     'no-shadow': 'off',
     'prettier/prettier': ['error'],
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
+    "react/no-unused-prop-types": "off",
     'import/prefer-default-export': 'off',
-
     'import/first': 'error',
     'react/jsx-props-no-spreading': ['off'],
     'global-require': 'off',
