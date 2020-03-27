@@ -1,9 +1,12 @@
 import { ThemeProvider } from '@material-ui/core/styles';
 import { AnimatePresence } from 'framer-motion';
+import 'html5-device-mockups/dist/device-mockups.css';
 import withRedux from 'next-redux-wrapper';
 import App from 'next/app';
 import 'normalize.css';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
+import 'prism-themes/themes/prism-darcula.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import React from 'react';
 import { Provider } from 'react-redux';
 import theme from '~/components/theme';

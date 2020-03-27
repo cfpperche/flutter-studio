@@ -5,6 +5,7 @@ import { LeftSidebar } from '~/components/layout/LeftSidebar';
 import MenuBar from '~/components/layout/MenuBar/MenuBar';
 import { ViewportWarning } from '~/components/ui/ViewportWarning';
 import { Scrollbars } from '~/components/ui/Scrollbars';
+import { SyntaxHighlight } from '~/components/ui/SytaxHighlight';
 
 const useStyles = makeStyles({
   container: {
@@ -87,7 +88,36 @@ function Design(props) {
           ref={modelPanelNode}
         >
           <Scrollbars className="overflow-auto" ref={modelPanelNode}>
-            asdasd
+            <div className={clsx('flex flex-row justify-center items-center')}>
+              <SyntaxHighlight>
+                {`
+                  // Copyright 2018 The Flutter team. All rights reserved.
+                  // Use of this source code is governed by a BSD-style license that can be
+                  // found in the LICENSE file.
+                  
+                  import 'package:flutter/material.dart';
+                  
+                  void main() => runApp(MyApp());
+                  
+                  class MyApp extends StatelessWidget {
+                    @override
+                    Widget build(BuildContext context) {
+                      return MaterialApp(
+                        title: 'Welcome to Flutter',
+                        home: Scaffold(
+                          appBar: AppBar(
+                            title: Text('Welcome to Flutter'),
+                          ),
+                          body: Center(
+                            child: Text('Hello World'),
+                          ),
+                        ),
+                      );
+                    }
+                  }
+                `}
+              </SyntaxHighlight>
+            </div>
           </Scrollbars>
         </div>
         <div className={clsx(classes.basePanel, classes.bottomBar)} />
