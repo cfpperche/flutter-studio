@@ -37,12 +37,11 @@ const useStyles = makeStyles({
     order: 0,
     maxHeight: '100vh',
     '& $topBar': {
-      display: 'flex',
       order: 0,
       flex: '0 0 auto',
       alignSelf: 'stretch',
     },
-    '& $mainPanel': {
+    '& $modelPanel': {
       order: 1,
       height: '100vh',
       maxHeight: '100vh',
@@ -57,7 +56,7 @@ const useStyles = makeStyles({
     minHeight: 40,
     borderBottom: '1px solid #1a1a1a',
   },
-  mainPanel: {
+  modelPanel: {
     backgroundColor: '#E6E6E6',
     overflow: 'hidden',
     position: 'relative',
@@ -76,16 +75,51 @@ const useStyles = makeStyles({
 
 function Design(props) {
   const classes = useStyles(props);
+  const modelPanelNode = useRef(null);
   return (
     <div className={clsx(classes.container)}>
       <div className={clsx(classes.basePanel, classes.leftPanel)}>
         <LeftSidebar />
       </div>
       <div className={clsx(classes.basePanel, classes.centerPanel)}>
-        <div className={clsx(classes.basePanel, classes.topBar)}>
-          <MenuBar />
+        <div className={clsx(classes.basePanel, classes.topBar)} />
+        <div
+          className={clsx(classes.basePanel, classes.modelPanel)}
+          ref={modelPanelNode}
+        >
+          <Scrollbars className="overflow-auto" ref={modelPanelNode}>
+            <div className={clsx('flex flex-row justify-center items-center')}>
+              <SyntaxHighlight>
+                {`
+                  // Copyright 2018 The Flutter team. All rights reserved.
+                  // Use of this source code is governed by a BSD-style license that can be
+                  // found in the LICENSE file.
+                  
+                  import 'package:flutter/material.dart';
+                  
+                  void main() => runApp(MyApp());
+                  
+                  class MyApp extends StatelessWidget {
+                    @override
+                    Widget build(BuildContext context) {
+                      return MaterialApp(
+                        title: 'Welcome to Flutter',
+                        home: Scaffold(
+                          appBar: AppBar(
+                            title: Text('Welcome to Flutter'),
+                          ),
+                          body: Center(
+                            child: Text('Hello World'),
+                          ),
+                        ),
+                      );
+                    }
+                  }
+                `}
+              </SyntaxHighlight>
+            </div>
+          </Scrollbars>
         </div>
-        <div className={clsx(classes.basePanel, classes.mainPanel)}>sdfsd</div>
         <div className={clsx(classes.basePanel, classes.bottomBar)} />
       </div>
       <div className={clsx(classes.basePanel, classes.rightPanel)} />
